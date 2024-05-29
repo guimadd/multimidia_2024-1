@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <title>Codificador Shannon Fano</title>
+    <style>
+      table,
+      th,
+      td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      th,
+      td {
+        padding: 5px 10px;
+      }
+      th {
+        background-color: white;
+        color: black;
+      }
+      * {
+        font-family: Arial, Helvetical, sans-serif;
+      }
+
+      .header {
+        text-align: center;
+        margin: 8px;
+      }
+
+      .row {
+        text-align: center;
+        margin: 8px;
+      }
+
+      .tree {
+        text-align: center;
+        margin: 8px;
+      }
+
+      .monospace {
+        font-family: monospace;
+      }
+
+      .center {
+        text-align: center;
+      }
+
+      .justify {
+        text-align: justify;
+      }
+    </style>
+    <script type="text/javascript" src="utils.js"></script>
+    <script type="text/javascript" src="State.js"></script>
+    <script type="text/javascript" src="shannon.js"></script>
+  </head>
+  <body>
+    <div class="header">
+      <h1>Codificador Shannon Fano</h1>
+    </div>
+
+    <div class="row">
+      <div>
+        <textarea cols="50" rows="5" type="text" id="input-encode"></textarea>
+      </div>
+      <div class="buttons">
+        <button onclick="encode()">Codificar</button>
+      </div>
+      <br />
+      <div>
+        <textarea
+          class="monospace"
+          cols="50"
+          rows="5"
+          type="text"
+          id="input-decode"
+        ></textarea>
+      </div>
+      <div class="buttons">
+        <button onclick="decode()">Decodificar</button>
+      </div>
+    </div>
+    <hr />
+    <div class="row">
+      Resultado:
+      <div>
+        <textarea
+          class="monospace"
+          cols="50"
+          rows="15"
+          type="text"
+          id="output-string"
+        ></textarea>
+        <!--
+                <button onclick="copyToClipboard()">Copiar</button>
+                -->
+      </div>
+      <div>
+        <span id="compression-rate"></span>
+      </div>
+      <div>
+        <span id="space-saving"></span>
+      </div>
+      <br />
+      <div class="buttons">
+        <button onclick="resetStateTable()" id="btInicio" disabled>
+          Início
+        </button>
+        <button onclick="changeStateTable(-1)" id="btAnterior" disabled>
+          Anterior
+        </button>
+        <button onclick="changeStateTable(+1)" id="btProximo" disabled>
+          Próximo
+        </button>
+      </div>
+    </div>
+
+    <a id="dictionary"></a>
+
+    <div class="tree">
+      <h2>Árvore de Shannon-Fano</h2>
+      <div id="tree"></div>
+    </div>
+
+    <br />
+  </body>
+</html>
